@@ -38,5 +38,14 @@ class Library
       puts "Sorry, you cannot checkout that book"
     end
   end
+
+  def return(book)
+    if checked_out.include?(book) && book.checked_out == true
+      book.checked_out = false
+      checked_out.delete(book)
+    else
+      puts "Sorry, you cannot return that book"
+    end
+  end
 end
 
