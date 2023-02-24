@@ -23,8 +23,8 @@ RSpec.describe Author do
         last_name: "Bronte"
         })
       jane_eyre = charlotte_bronte.write("Jane Eyre", "October 16, 1847")
-
-      expect(jane_eyre.class).to be_a Book
+    
+      expect(jane_eyre.class).to eq(Book)
       expect(jane_eyre.title).to eq("Jane Eyre")
     end
   end
