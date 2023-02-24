@@ -7,4 +7,6 @@ class Author
     @books = []
 
   end
+
+  def
 end
