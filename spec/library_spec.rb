@@ -69,7 +69,7 @@ RSpec.describe Library do
     end
   end
 
-  describe '#checkout book' do
+  describe '#checkout_book' do
     it 'can checkout books' do
       library = Library.new("Denver Public Library")
       charlotte_bronte = Author.new({
@@ -86,4 +86,24 @@ RSpec.describe Library do
       expect(library.checked_out).to eq([the_professor])
     end
   end
+
+  describe '#return_book' do
+    it 'can return books' do
+      library = Library.new("Denver Public Library")
+      charlotte_bronte = Author.new({
+        first_name: "Charlotte",
+        last_name: "Bronte"
+        })
+      jane_eyre = charlotte_bronte.write("Jane Eyre", "October 16, 1847")
+      villette = charlotte_bronte.write("Villette", "1853")
+      the_professor = charlotte_bronte.write("The Professor", "1857")
+      
+      library.add_author(charlotte_bronte)
+      library.checkout(the_professor)
+      library.return(the_professor)
+
+      expect(library.checked_out).to eq([])
+    end
+  end
+
 end
