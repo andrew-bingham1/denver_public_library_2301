@@ -1,12 +1,14 @@
 class Library
   attr_reader :name,
               :books,
-              :authors
+              :authors,
+              :checked_out
 
   def initialize(name)
     @name = name
     @books = []
     @authors = []
+    @checked_out = []
   end
 
   def add_author(author)
@@ -27,6 +29,14 @@ class Library
     publication_hash[:end] = sorted_books_arr.last.to_s
     publication_hash
   end
-  
+
+  def checkout(book)
+    if books.include?(book) && book.checked_out == false
+      book.checked_out = true
+      checked_out << book 
+    else 
+      puts "Sorry, you cannot checkout that book"
+    end
+  end
 end
 
