@@ -17,8 +17,6 @@ class Author
       })
 
     @books.last
-    
-
   end
 end
 
