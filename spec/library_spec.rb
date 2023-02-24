@@ -52,4 +52,20 @@ RSpec.describe Library do
       expect(library.books.last.title).to eq("To Kill a Mockingbird")
     end
   end
+
+  describe '#publication_time_frame_for' do
+    it 'can determine publication time frame' do 
+      library = Library.new("Denver Public Library")
+      charlotte_bronte = Author.new({
+        first_name: "Charlotte",
+        last_name: "Bronte"
+        })
+      jane_eyre = charlotte_bronte.write("Jane Eyre", "October 16, 1847")
+      villette = charlotte_bronte.write("Villette", "1853")
+      the_professor = charlotte_bronte.write("The Professor", "1857")
+    
+      expect(library.publication_time_frame_for(charlotte_bronte)[:start]).to eq("1847")
+      expect(library.publication_time_frame_for(charlotte_bronte)[:end]).to eq("1857")
+    end
+  end
 end
